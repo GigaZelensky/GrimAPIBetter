@@ -1,11 +1,13 @@
 package ac.grim.grimac.api.plugin;
 
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.Collection;
 import java.util.logging.Logger;
 
+@ApiStatus.Experimental
 public class BasicGrimPlugin implements GrimPlugin {
     private final Logger logger;
     private final File dataFolder;

@@ -1,15 +1,16 @@
-import versioning.BuildFlags // Assuming these helpers are compatible
+import versioning.BuildConfig // Assuming these helpers are compatible
 import versioning.VersionUtil // Assuming these helpers are compatible
 import org.gradle.api.JavaVersion
 import java.util.Properties
 
 plugins {
     java
+    `java-library`
     `maven-publish`
     id("net.kyori.indra.git") version "3.1.3" // Keep for Git info access
 }
 
-BuildFlags.init(project) // Initialize your build flags helper
+BuildConfig.init(project) // Initialize your build flags helper
 
 /**
  * ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -77,15 +78,15 @@ BuildFlags.init(project) // Initialize your build flags helper
  */
 // --- SET YOUR CURRENT 4-PART EPOCH BASE VERSION HERE ---
 // Format: EPOCH.MAJOR.MINOR.PATCH
-val baseVersion = "1.1.0.0" // Example starting version for Epoch 1
+val baseVersion = "1.2.0.0" // Example starting version for Epoch 1
 
 // --- Standard Project Configuration ---
 group = "ac.grim.grimac" // Or your desired group ID
 // VersionUtil appends commit/branch metadata if not a release build
-version = VersionUtil.compute(baseVersion)
+version = VersionUtil.computeVersion(baseVersion)
 description = "GrimAPI"
 
-println("⚙️  Build flags     → release=${BuildFlags.release}")
+println("⚙️  Build flags     → release=${BuildConfig.release}")
 println("📦 Project version → $version")
 
 // --- Java Configuration ---
@@ -138,6 +139,11 @@ repositories {
 dependencies {
     compileOnly("org.jetbrains:annotations:24.1.0")
     compileOnly("org.projectlombok:lombok:1.18.36")
+    compileOnly("net.kyori:adventure-text-minimessage:4.21.0")
+    compileOnly("org.incendo:cloud-core:2.0.0")
+//    api("it.unimi.dsi:fastutil:8.5.15")
+    api(project("packet"))
+
     annotationProcessor("org.projectlombok:lombok:1.18.36")
     testCompileOnly("org.projectlombok:lombok:1.18.36")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.36")

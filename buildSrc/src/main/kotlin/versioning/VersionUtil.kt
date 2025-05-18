@@ -10,12 +10,12 @@ import java.io.ByteArrayOutputStream
  */
 object VersionUtil {
 
-    fun compute(baseVersion: String): String {
+    fun computeVersion(baseVersion: String): String {
         val branch = getGitBranch()
         val commit = getGitCommitHash()
 
         return when {
-            BuildFlags.release                      -> baseVersion
+            BuildConfig.release                      -> baseVersion
             branch == "main" || branch == "master"  -> "$baseVersion-$commit"
             else                                    -> "$baseVersion-$branch-$commit"
         }

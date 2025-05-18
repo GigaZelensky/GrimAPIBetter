@@ -11,7 +11,7 @@ import org.gradle.api.Project
  *
  * Initialise once from the root build script with  BuildFlags.init(project)
  */
-object BuildFlags {
+object BuildConfig {
 
     // we inject the root project from build.gradle.kts
     private lateinit var root: Project

@@ -1,10 +1,11 @@
 package ac.grim.grimac.api.packet.types.server.play;
+import ac.grim.grimac.api.packet.MCPacket;
 
 import ac.grim.grimac.api.packet.types.event.PacketSendEvent;
 
 public interface ServerEntityRelativeMoveAndRotationPacket {
     static ServerEntityRelativeMoveAndRotationPacket from(PacketSendEvent event) {
-        return null; // TODO (Packet Rewrite)
+        return MCPacket.getAPI().packetFactory().serverEntityRelativeMoveAndRotationPacket(event);
     }
 
     int getEntityId();

@@ -1,5 +1,6 @@
 package ac.grim.grimac.api.packet.types.server.play;
 
+import ac.grim.grimac.api.packet.MCPacket;
 import ac.grim.grimac.api.packet.entity.EntityData;
 import ac.grim.grimac.api.packet.types.event.PacketSendEvent;
 import ac.grim.grimac.api.packet.util.vec.ImmutableVector3d;
@@ -9,7 +10,7 @@ import java.util.UUID;
 
 public interface ServerSpawnPlayerPacket {
     static ServerSpawnPlayerPacket from(PacketSendEvent event) {
-        return null; // TODO (Packet Rewrite)
+        return MCPacket.getAPI().packetFactory().serverSpawnPlayerPacket.from(event);
     }
 
     int getEntityId();

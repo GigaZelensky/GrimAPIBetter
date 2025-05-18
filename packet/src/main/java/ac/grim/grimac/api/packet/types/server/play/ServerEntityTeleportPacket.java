@@ -1,4 +1,5 @@
 package ac.grim.grimac.api.packet.types.server.play;
+import ac.grim.grimac.api.packet.MCPacket;
 
 import ac.grim.grimac.api.packet.types.SendablePacket;
 import ac.grim.grimac.api.packet.types.event.PacketSendEvent;
@@ -8,11 +9,11 @@ import org.jetbrains.annotations.NotNull;
 public interface ServerEntityTeleportPacket extends SendablePacket {
     static ServerEntityTeleportPacket from(int entityID, ImmutableVector3d position, float yaw, float pitch, boolean onGround) {
 //        return MCPacket.getAPI().packetFactory().serverEntityTeleportPacket(entityID, position, yaw, pitch, onGround);
-        return null; // TODO (Packet Rewrite)
+        return MCPacket.getAPI().packetFactory().serverEntityTeleportPacket(entityID, position, yaw, pitch, onGround);
     }
 
     static ServerEntityTeleportPacket from(PacketSendEvent event) {
-        return null; // TODO (Packet Rewrite)
+        return MCPacket.getAPI().packetFactory().serverEntityTeleportPacket(event);
     }
 
     @NotNull ImmutableVector3d getPosition();

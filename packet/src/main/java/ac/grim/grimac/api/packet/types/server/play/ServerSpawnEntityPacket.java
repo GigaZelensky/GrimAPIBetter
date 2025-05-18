@@ -1,4 +1,5 @@
 package ac.grim.grimac.api.packet.types.server.play;
+import ac.grim.grimac.api.packet.MCPacket;
 
 import ac.grim.grimac.api.packet.entity.PacketEntityType;
 import ac.grim.grimac.api.packet.types.event.PacketSendEvent;
@@ -9,7 +10,7 @@ import java.util.UUID;
 
 public interface ServerSpawnEntityPacket {
     static ServerSpawnEntityPacket from(PacketSendEvent event) {
-        return null; // TODO (Packet Rewrite)
+        return MCPacket.getAPI().packetFactory().serverSpawnEntityPacket(event);
     }
 
     int getEntityId();
